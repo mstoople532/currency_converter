@@ -1,8 +1,19 @@
 # creates a class, Currency, that represents currencies to be converted
 class Currency
-  def initialize(value, code)  
-    @value = value.to_int
-    @code = code
+  def initialize(value, code = 0)
+    symbols = {
+      "$" => "USD",
+      "£" => "GBP",
+      "€" => "EUR"
+    }
+    if symbols.keys.include?(value.chr)
+      symbols[value.chr]
+      @value = value.tr(value.chr, "0").to_i
+      @code = symbols[value.chr]
+    else
+      @value = value
+      @code = code
+    end
   end
 
   def value
