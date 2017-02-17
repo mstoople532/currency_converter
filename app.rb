@@ -1,0 +1,3 @@
+require_relative CurrencyConverter
+
+convert(currency_to_convert, currency_to_convert_to, conversion_rates)
