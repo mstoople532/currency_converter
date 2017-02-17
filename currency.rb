@@ -14,7 +14,7 @@ class Currency
   end
 
   def +(other)
-    if other.is_a?(Integer)
+    if other.is_a?(Integer || Float)
       total = value + other
     elsif currency_code == other.currency_code
       total = (value + other.value)
@@ -23,7 +23,7 @@ class Currency
   end
 
   def -(other)
-    if other.is_a?(Integer)
+    if other.is_a?(Integer || Float)
       total = value - other
     elsif currency_code == other.currency_code
       total = (value - other.value)
@@ -32,7 +32,7 @@ class Currency
   end
 
   def *(other)
-    if other.is_a?(Integer)
+    if other.is_a?(Integer || Float)
       total = value * other
     elsif currency_code == other.currency_code
       total = (value * other.value)
@@ -41,7 +41,7 @@ class Currency
   end
 
   def /(other)
-    if other.is_a?(Integer)
+    if other.is_a?(Integer || Float)
       total = value / other
     elsif currency_code == other.currency_code
       total = (value / other.value)
