@@ -1,6 +1,6 @@
 # creates a class, Currency, that represents currencies to be converted
 class Currency
-  def initialize(value, code)
+  def initialize(value, code)  
     @value = value.to_int
     @code = code
   end

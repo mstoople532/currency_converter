@@ -2,40 +2,32 @@
 require_relative "currency"
 
 conversion_rates = {
-"USD" => 1,
-"EUR" => 0.936617,
-"GBP" => 0.800028
+  "USD" => 1,
+  "EUR" => 0.936617,
+  "GBP" => 0.800028
 }
 
 class CurrencyConverter
-  def initialize(currency_to_convert, currency_to_convert_to, currency_table)
-    @currency_to_convert = currency_to_convert
-    @currency_to_convert_to = currency_to_convert_to
+  def initialize(currency_table)
     @currency_table = currency_table
-  end
-
-  def currency_to_convert
-    @currency_to_convert
-  end
-
-  def currency_code
-    @currency_to_convert_to
   end
 
   def currency_table
     @currency_table
   end
-  def convert(starting_currency, final_currency, currency_table)
-    currency_table.fetch(final_currency) / currency_table.fetch(starting_currency)
+
+  def convert(starting_currency, final_currency)
+    numerator = currency_table[final_currency.currency_code]
+    denominator = currency_table[starting_currency.currency_code]
+    ratio = numerator / denominator
+    starting_currency.value * ratio
   end
 end
 
-
-dollar = Currency.new(1, "USD")
+dollar = Currency.new(4, "USD")
 pound = Currency.new(1, "GBP")
 euro = Currency.new(1, "EUR")
+dollar.value
+converter = CurrencyConverter.new(conversion_rates)
 
-CurrencyConverter.convert(dollar, pound, conversion_rates)
-
-
-currency_table.fetch(dollar)
+converter.convert(dollar, pound)
