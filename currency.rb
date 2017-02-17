@@ -16,29 +16,27 @@ class Currency
   def +(other)
     if other.is_a?(Integer)
       total = value + other
-      Currency.new(total,currency_code)
-    else
+    elsif currency_code == other.currency_code
       total = (value + other.value)
-      Currency.new(total, currency_code)
+    end
+    Currency.new(total, currency_code)
   end
 
   def -(other)
     if other.is_a?(Integer)
       total = value - other
-      Currency.new(total,currency_code)
     else
       total = (value - other.value)
-      Currency.new(total, currency_code)
+    end
+    Currency.new(total, currency_code)
   end
 
   def *(other)
-    currency_code
     if other.is_a?(Integer)
       total = value * other
-      Currency.new(total,currency_code)
     else
       total = (value * other.value)
-      Currency.new(total, currency_code)
     end
+    Currency.new(total, currency_code)
   end
 end
