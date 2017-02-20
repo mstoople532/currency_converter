@@ -23,11 +23,3 @@ class CurrencyConverter
     starting_currency.value * ratio
   end
 end
-
-dollar = Currency.new("$4", "USD")
-pound = Currency.new("$1", "GBP")
-euro = Currency.new("1", "EUR")
-dollar.value
-converter = CurrencyConverter.new(conversion_rates)
-
-converter.convert(dollar, pound)
